@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FFx-sX-Mh9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Location-->
+        <scene sceneID="Hld-AQ-J7a">
+            <objects>
+                <viewController storyboardIdentifier="FindLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mn7-Qa-NJY" customClass="FindLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qyc-zY-aPQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="Z6i-0q-cry">
+                                <rect key="frame" x="155.5" y="84" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="glL-jE-89D"/>
+                                    <constraint firstAttribute="height" constant="64" id="xQq-HI-ae5"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sZV-XK-Gru" userLabel="Content Stack View">
+                                <rect key="frame" x="37.5" y="168" width="300" height="144"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BgT-c5-N7k">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="41"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-Jt-uhV">
+                                        <rect key="frame" x="0.0" y="49" width="300" height="43"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkP-e6-m7v" customClass="RoundedBorderButton" customModule="OnTheMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="300" height="44"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="VC7-Uz-Mhc"/>
+                                        </constraints>
+                                        <state key="normal" title="FIND LOCATION">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="findLocationButtonDidReceiveTouchUpInside:" destination="mn7-Qa-NJY" eventType="touchUpInside" id="SrK-P4-7Kc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="Fhw-Lp-5jv"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sZV-XK-Gru" firstAttribute="width" secondItem="Qyc-zY-aPQ" secondAttribute="width" multiplier="0.8" id="0UX-9z-VhJ"/>
+                            <constraint firstItem="sZV-XK-Gru" firstAttribute="centerX" secondItem="xQW-vo-68U" secondAttribute="centerX" id="Msd-hu-c4J"/>
+                            <constraint firstItem="Z6i-0q-cry" firstAttribute="centerX" secondItem="xQW-vo-68U" secondAttribute="centerX" id="T9p-uR-eKn"/>
+                            <constraint firstItem="sZV-XK-Gru" firstAttribute="top" secondItem="Z6i-0q-cry" secondAttribute="bottom" constant="20" id="ZXj-AD-vzP"/>
+                            <constraint firstItem="Z6i-0q-cry" firstAttribute="top" secondItem="xQW-vo-68U" secondAttribute="top" constant="20" id="rJQ-u8-BvX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xQW-vo-68U"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="01X-uH-07n">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="Ea9-IM-RCx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l0s-GV-TgM">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonDidReceiveTouchUpInside:" destination="mn7-Qa-NJY" eventType="touchUpInside" id="6G7-5F-x8w"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="BgT-c5-N7k" id="oSH-p0-wZc"/>
+                        <outlet property="findLocationButton" destination="nkP-e6-m7v" id="YCf-yt-2y9"/>
+                        <outlet property="linkTextField" destination="Lly-Jt-uhV" id="rZj-sP-Gw8"/>
+                        <segue destination="7ZC-dv-y3Q" kind="show" identifier="AddLocationMapSegue" id="OeA-Ue-UWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mim-Yp-I4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74.5" y="129.5"/>
+        </scene>
+        <!--Add Location-->
+        <scene sceneID="Dcz-Ob-3IA">
+            <objects>
+                <viewController storyboardIdentifier="AddLocationMapViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ZC-dv-y3Q" customClass="AddLocationMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CxQ-PI-OO0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AHs-GA-KU2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7ZC-dv-y3Q" id="9nV-k4-ZsI"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDr-E7-dc2" customClass="RoundedBorderButton" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ncx-Hq-YxX"/>
+                                </constraints>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finishButtonDidReceiveTouchUpInside:" destination="7ZC-dv-y3Q" eventType="touchUpInside" id="9wg-Rf-TSZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AHs-GA-KU2" firstAttribute="top" secondItem="dNW-ds-ia5" secondAttribute="top" id="0SS-iR-qIy"/>
+                            <constraint firstItem="AHs-GA-KU2" firstAttribute="bottom" secondItem="dNW-ds-ia5" secondAttribute="bottom" id="2Ig-G7-eAo"/>
+                            <constraint firstItem="AHs-GA-KU2" firstAttribute="leading" secondItem="dNW-ds-ia5" secondAttribute="leading" id="Gny-za-jQf"/>
+                            <constraint firstItem="dNW-ds-ia5" firstAttribute="bottom" secondItem="yDr-E7-dc2" secondAttribute="bottom" constant="20" id="fgH-24-Z01"/>
+                            <constraint firstItem="AHs-GA-KU2" firstAttribute="trailing" secondItem="dNW-ds-ia5" secondAttribute="trailing" id="ik9-yE-jRk"/>
+                            <constraint firstItem="yDr-E7-dc2" firstAttribute="leading" secondItem="dNW-ds-ia5" secondAttribute="leading" constant="20" id="tYi-Mt-xV4"/>
+                            <constraint firstItem="dNW-ds-ia5" firstAttribute="trailing" secondItem="yDr-E7-dc2" secondAttribute="trailing" constant="20" id="w2j-zc-Q4K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dNW-ds-ia5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="elN-H6-j4W"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="finishButton" destination="yDr-E7-dc2" id="Wab-F9-cL3"/>
+                        <outlet property="mapView" destination="AHs-GA-KU2" id="k1F-qU-v9k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBw-9V-DVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="130"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mHl-iK-qJE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FFx-sX-Mh9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MsO-jG-kVB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mn7-Qa-NJY" kind="relationship" relationship="rootViewController" id="avS-hV-d7f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YNn-Ki-ZQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-644" y="130"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_world" width="52" height="67"/>
+    </resources>
+</document>

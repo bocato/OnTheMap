@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nK2-e5-H16">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--On The Map-->
+        <scene sceneID="MQS-Mb-1WZ">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nK2-e5-H16" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e9H-Su-njv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JHA-oV-UOY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nK2-e5-H16" id="JPd-7o-Tr3"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EMa-V0-uck" firstAttribute="trailing" secondItem="JHA-oV-UOY" secondAttribute="trailing" id="ARk-g0-ZvC"/>
+                            <constraint firstItem="JHA-oV-UOY" firstAttribute="leading" secondItem="EMa-V0-uck" secondAttribute="leading" id="GQd-pt-t3S"/>
+                            <constraint firstItem="JHA-oV-UOY" firstAttribute="top" secondItem="EMa-V0-uck" secondAttribute="top" id="hOK-7y-nlo"/>
+                            <constraint firstItem="EMa-V0-uck" firstAttribute="bottom" secondItem="JHA-oV-UOY" secondAttribute="bottom" id="lor-H3-o6e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EMa-V0-uck"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="On The Map" id="L0P-lp-cqF">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="805-Bl-GrW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iPd-1F-gJz">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonDidReceiveTouchUpInside:" destination="nK2-e5-H16" eventType="touchUpInside" id="F7l-gh-eGF"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="icon_addpin" id="ein-C1-R9v">
+                                <color key="tintColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="uul-U9-Xhf" kind="presentation" id="LpO-JQ-SMO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Wv4-8q-Y3V">
+                                <color key="tintColor" red="0.0039215686269999999" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="refreshBarButtonItemDidReceiveTouchUpInside:" destination="nK2-e5-H16" id="cam-lm-zv6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="iPd-1F-gJz" id="YQ8-9G-fdz"/>
+                        <outlet property="mapView" destination="JHA-oV-UOY" id="WzQ-EM-ZXs"/>
+                        <outlet property="refreshButton" destination="Wv4-8q-Y3V" id="C6b-3E-xGE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="df3-NB-6X4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-54" y="86"/>
+        </scene>
+        <!--AddLocation-->
+        <scene sceneID="SgA-XP-bbz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLocation" id="uul-U9-Xhf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wQ-TE-0JY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="85"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_addpin" width="24" height="24"/>
+    </resources>
+</document>

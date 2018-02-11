@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sgh-BZ-VHQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--On The Map Navigation Controller-->
+        <scene sceneID="kA8-oq-z0l">
+            <objects>
+                <navigationController id="qZK-BV-ohv" customClass="OnTheMapNavigationController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="6dU-L3-deK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rT7-h1-QAL">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mMB-28-XVw" kind="relationship" relationship="rootViewController" id="q65-bx-U14"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-Be-ezT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="-288"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="OXm-Uv-qud">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="mMB-28-XVw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7QS-dC-DLH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0XV-M6-dNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1270" y="-289"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="67h-sX-ShP">
+            <objects>
+                <tabBarController id="Sgh-BZ-VHQ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XKL-0H-qaf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qZK-BV-ohv" kind="relationship" relationship="viewControllers" id="uWv-uR-hzh"/>
+                        <segue destination="NVy-3K-bxJ" kind="relationship" relationship="viewControllers" id="u2C-Di-pmn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqY-FO-776" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-281" y="41"/>
+        </scene>
+        <!--On The Map Navigation Controller-->
+        <scene sceneID="HNj-tT-9Du">
+            <objects>
+                <navigationController id="NVy-3K-bxJ" customClass="OnTheMapNavigationController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icon_listview-selected" selectedImage="icon_listview-deselected" id="LWB-yW-e3h"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aum-xM-1sY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="y7c-QI-jzp" kind="relationship" relationship="rootViewController" id="6OR-Re-MpJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3J9-kf-R4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="397"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="0DN-sh-77b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="List" id="y7c-QI-jzp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gsr-c9-wmX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PhT-48-dYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1270" y="396"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_listview-selected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+    </resources>
+</document>
