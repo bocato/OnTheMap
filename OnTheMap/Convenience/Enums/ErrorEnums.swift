@@ -23,6 +23,7 @@ enum ErrorMessage: String {
     case invalidLink = "Invalid link."
     case invalidAddress = "Invalid address."
     case couldNotLoadData = "Could not load data."
+    case couldNotOpenURL = "Sorry, we could'n open URL, try again later."
 }
 
 class ErrorFactory {

@@ -98,7 +98,7 @@ class ListViewController: UIViewController {
 
 }
 
-// MARK: -
+// MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,12 +113,15 @@ extension ListViewController: UITableViewDataSource {
     
 }
 
-// MARK: -
+// MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        guard let studentLocation = studentLocations?[indexPath.row], let mediaUrl = studentLocation.mediaURL else { return }
+        guard let studentLocation = studentLocations?[indexPath.row], let mediaUrl = studentLocation.mediaURL, !mediaUrl.isEmpty else {
+            AlertHelper.showAlert(in: self, withTitle: "Error", message: ErrorMessage.couldNotOpenURL.rawValue)
+            return
+        }
         let url = URL(string: mediaUrl)!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

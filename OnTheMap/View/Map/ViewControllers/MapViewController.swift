@@ -125,12 +125,15 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        guard let annotationSubtitle = view.annotation?.subtitle, control == view.rightCalloutAccessoryView else { return }
-        let url = URL(string: annotationSubtitle!)!
+        guard let annotationSubtitle = view.annotation?.subtitle, let link = annotationSubtitle, control == view.rightCalloutAccessoryView, !link.isEmpty else {
+            AlertHelper.showAlert(in: self, withTitle: "Error", message: ErrorMessage.couldNotOpenURL.rawValue)
+            return
+        }
+        let url = URL(string: link)!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
-            AlertHelper.showAlert(in: self, withTitle: "Error", message: "Sorry, we could'n open '\(annotationSubtitle!)', try again later.")
+            AlertHelper.showAlert(in: self, withTitle: "Error", message: "Sorry, we could'n open '\(link)', try again later.")
         }
     }
     
