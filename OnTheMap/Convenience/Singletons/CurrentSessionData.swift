@@ -16,11 +16,13 @@ class CurrentSessionData {
     // MARK: - Properties
     var udacitySession: SessionResponse?
     var userData: User?
+    var studentLocations: [StudentInformation]?
     
     // MARK: - Methods
     func clearData() {
-        userData = nil
         udacitySession = nil
+        userData = nil
+        studentLocations = nil
     }
     
 }

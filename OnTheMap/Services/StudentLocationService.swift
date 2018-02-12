@@ -16,19 +16,16 @@ class StudentLocationService {
     
     private let parseHeaders: [String: String] = ["X-Parse-Application-Id": Environment.shared.parseApplicationId, "X-Parse-REST-API-Key": Environment.shared.parseRestApiKey]
     
-    func getStudentLocations(_ limit: Int? = nil, skip: Int? = nil, order: String? = nil, success: @escaping ((_ locations: [StudentInformation]?) -> Void), onFailure failure: ((ServiceError?) -> Void)? = nil, onCompletion completion: (() -> Void)? = nil) {
+    func getStudentLocations(_ limit: Int = 100, skip: Int? = nil, order: String = "-updatedAt", success: @escaping ((_ locations: [StudentInformation]?) -> Void), onFailure failure: ((ServiceError?) -> Void)? = nil, onCompletion completion: (() -> Void)? = nil) {
         
         
         var pathParams = [String: String]()
-        if let limit = limit {
-            pathParams["limit"] = "\(limit)"
-        }
+        
+        pathParams["limit"] = "\(limit)"
         if let skip = skip {
             pathParams["skip"] = "\(skip)"
         }
-        if let order = order {
-            pathParams["order"] = order
-        }
+        pathParams["order"] = order
         
         var urlString = path
         if pathParams.keys.count > 0 {

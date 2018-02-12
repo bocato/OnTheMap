@@ -16,25 +16,6 @@ class ListViewController: UIViewController {
     @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Properties
-    private var studentLocations: [StudentInformation]? {
-        didSet {
-            guard let studentLocations = studentLocations else {
-                DispatchQueue.main.async {
-                    self.tableView.isHidden = true
-                    self.noDataLabel.isHidden = false
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                self.tableView.separatorStyle = studentLocations.count == 0 ? .none : .singleLine
-                self.tableView.isHidden = studentLocations.count == 0
-                self.noDataLabel.isHidden = !self.tableView.isHidden
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +33,29 @@ class ListViewController: UIViewController {
         tableView.estimatedRowHeight = 100
     }
     
+    // MARK: - Helpers
+    func handleStudentLocationsResponse(_ response: [StudentInformation]?) {
+        CurrentSessionData.shared.studentLocations = response
+        guard let studentLocations = response else {
+            DispatchQueue.main.async {
+                self.tableView.isHidden = true
+                self.noDataLabel.isHidden = false
+            }
+            return
+        }
+        DispatchQueue.main.async {
+            self.tableView.separatorStyle = studentLocations.count == 0 ? .none : .singleLine
+            self.tableView.isHidden = studentLocations.count == 0
+            self.noDataLabel.isHidden = !self.tableView.isHidden
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - API Requests
     @objc func loadStudentLocations() {
         tableView.startLoading(blur: true, backgroundColor: UIColor.white, activityIndicatorViewStyle: .whiteLarge, activityIndicatorColor: UIColor.udacityBlue)
         StudentLocationService().getStudentLocations(success: { (studentLocations) in
-            self.studentLocations = studentLocations?.sorted(by: { (studentInformation1, studentInformation2) -> Bool in
-                guard let createdAt1 = studentInformation1.createdAt, let createdAt2 = studentInformation2.createdAt else {
-                    return false
-                }
-                return createdAt1 < createdAt2
-            })
+            self.handleStudentLocationsResponse(studentLocations)
         }, onFailure: { (errorResponse) in
             AlertHelper.showAlert(in: self, withTitle: "Error", message: errorResponse?.error ?? ErrorMessage.unknown.rawValue, leftAction: UIAlertAction(title: "Retry", style: .default, handler: { (action) in
                 self.loadStudentLocations()
@@ -102,12 +96,12 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentLocations?.count ?? 0
+        return CurrentSessionData.shared.studentLocations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudentLocationTableViewCell.identifier, for: indexPath) as! StudentLocationTableViewCell
-        cell.configure(with: studentLocations?[indexPath.row])
+        cell.configure(with: CurrentSessionData.shared.studentLocations?[indexPath.row])
         return cell
     }
     
@@ -118,7 +112,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        guard let studentLocation = studentLocations?[indexPath.row], let mediaUrl = studentLocation.mediaURL, !mediaUrl.isEmpty else {
+        guard let studentLocation = CurrentSessionData.shared.studentLocations?[indexPath.row], let mediaUrl = studentLocation.mediaURL, !mediaUrl.isEmpty else {
             AlertHelper.showAlert(in: self, withTitle: "Error", message: ErrorMessage.couldNotOpenURL.rawValue)
             return
         }

@@ -15,11 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: RoundedBorderButton!
     
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - Configuration
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -65,6 +60,7 @@ class LoginViewController: UIViewController {
             
         }, onFailure: { (errorResponse) in
             AlertHelper.showAlert(in: self, withTitle: "Error", message: errorResponse?.error ?? ErrorMessage.unknown.rawValue)
+            self.loginButton.stopLoading()
         }, onCompletion: nil)
         
     }

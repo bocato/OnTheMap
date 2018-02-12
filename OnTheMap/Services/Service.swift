@@ -154,6 +154,7 @@ extension URLRequest {
             DispatchQueue.main.async {
                 completion()
             }
+            
         }, normalizingData: shouldNormalizeData)
         
     }

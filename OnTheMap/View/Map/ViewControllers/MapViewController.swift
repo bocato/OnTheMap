@@ -18,11 +18,6 @@ class MapViewController: UIViewController {
     
     // MARK: - Properties
     private var mkPointAnnotations = [MKPointAnnotation]()
-    private var studentLocations: [StudentInformation]? {
-        didSet {
-            configureMapAndCreateMKPointAnnotations(from: studentLocations)
-        }
-    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -39,12 +34,8 @@ class MapViewController: UIViewController {
     @objc func loadStudentLocations() {
         mapView.startLoading(blur: true, activityIndicatorViewStyle: .whiteLarge, activityIndicatorColor: UIColor.udacityBlue)
         StudentLocationService().getStudentLocations(success: { (studentLocations) in
-            self.studentLocations = studentLocations?.sorted(by: { (studentInformation1, studentInformation2) -> Bool in
-                guard let createdAt1 = studentInformation1.createdAt, let createdAt2 = studentInformation2.createdAt else {
-                    return false
-                }
-                return createdAt1 < createdAt2
-            })
+            CurrentSessionData.shared.studentLocations = studentLocations
+            self.configureMapAndCreateMKPointAnnotations(from: studentLocations)
         }, onFailure: { (errorResponse) in
             AlertHelper.showAlert(in: self, withTitle: "Error", message: errorResponse?.error ?? ErrorMessage.unknown.rawValue, leftAction: UIAlertAction(title: "Retry", style: .default, handler: { (action) in
                 self.loadStudentLocations()
